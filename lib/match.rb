@@ -3,12 +3,11 @@ require "./lib/create_grid"
 class Match
   def initialize
     @match = CreateGrid.new
-    print "Choose bitch: "
   end
 
   def p1_choice
     choice = gets.chomp
-    case choice
+    case choice.downcase
     when "a1"
       @match.a1 = "X"
     when "a2"
@@ -33,7 +32,38 @@ class Match
     end
     @match.board
   end
+
+  def p2_choice
+    choice = gets.chomp
+    case choice.downcase
+    when "a1"
+      @match.a1 = "O"
+    when "a2"
+      @match.a2 = "O"
+    when "a3"
+      @match.a3 = "O"
+    when "b1"
+      @match.b1 = "O"
+    when "b2"
+      @match.b2 = "O"
+    when "b3"
+      @match.b3 = "O"
+    when "c1"
+      @match.c1 = "O"
+    when "c2"
+      @match.c2 = "O"
+    when "c3"
+      @match.c3 = "O"
+    else
+      print "Please enter a valid option: "
+      p1_choice
+    end
+    @match.board
+  end
 end
 
 round = Match.new
+print "Player 1 chooses position: "
 round.p1_choice
+print "Player 2 chooses position: "
+round.p2_choice
