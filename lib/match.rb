@@ -27,6 +27,9 @@ class Match
       @match.c2 = "X"
     when "c3"
       @match.c3 = "X"
+    else
+      print "Please enter a valid option: "
+      p1_choice
     end
     @match.board
   end
