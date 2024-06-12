@@ -5,60 +5,29 @@ class Match
     @match = CreateGrid.new
   end
 
-  def p1_choice
-    choice = gets.chomp
-    case choice.downcase
-    when "a1"
-      @match.a1 = "X"
-    when "a2"
-      @match.a2 = "X"
-    when "a3"
-      @match.a3 = "X"
-    when "b1"
-      @match.b1 = "X"
-    when "b2"
-      @match.b2 = "X"
-    when "b3"
-      @match.b3 = "X"
-    when "c1"
-      @match.c1 = "X"
-    when "c2"
-      @match.c2 = "X"
-    when "c3"
-      @match.c3 = "X"
+  def make_choice(player)
+    choice = gets.chomp.downcase
+    if %w[a1 a2 a3 b1 b2 b3 c1 c2 c3].include?(choice)
+      if @match.is_occupied?(choice)
+        print "This position is taken."
+        print "Please enter a valid position: "
+        make_choice(player)
+      else
+        @match.send("#{choice}=", player)
+      end
     else
-      print "Please enter a valid option: "
-      p1_choice
+      print "Please enter a valid position: "
+      make_choice(player)
     end
     @match.board
   end
 
+  def p1_choice
+    make_choice("X")
+  end
+
   def p2_choice
-    choice = gets.chomp
-    case choice.downcase
-    when "a1"
-      @match.a1 = "O"
-    when "a2"
-      @match.a2 = "O"
-    when "a3"
-      @match.a3 = "O"
-    when "b1"
-      @match.b1 = "O"
-    when "b2"
-      @match.b2 = "O"
-    when "b3"
-      @match.b3 = "O"
-    when "c1"
-      @match.c1 = "O"
-    when "c2"
-      @match.c2 = "O"
-    when "c3"
-      @match.c3 = "O"
-    else
-      print "Please enter a valid option: "
-      p1_choice
-    end
-    @match.board
+    make_choice("O")
   end
 end
 
@@ -67,3 +36,17 @@ print "Player 1 chooses position: "
 round.p1_choice
 print "Player 2 chooses position: "
 round.p2_choice
+print "Player 1 chooses position: "
+round.p1_choice
+print "Player 2 chooses position: "
+round.p2_choice
+print "Player 1 chooses position: "
+round.p1_choice
+print "Player 2 chooses position: "
+round.p2_choice
+print "Player 1 chooses position: "
+round.p1_choice
+print "Player 2 chooses position: "
+round.p2_choice
+print "Player 1 chooses position: "
+round.p1_choice

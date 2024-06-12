@@ -12,6 +12,10 @@ class CreateGrid
     board
   end
 
+  def is_occupied?(position)
+    send(position) != " "
+  end
+
   def board
     puts "    A   B   C"
     puts "  |⎺⎺⎺|⎺⎺⎺|⎺⎺⎺|"
@@ -24,3 +28,5 @@ class CreateGrid
     puts ""
   end
 end
+
+# test = CreateGrid.new
