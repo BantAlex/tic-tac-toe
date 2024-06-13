@@ -3,7 +3,9 @@ class CreateGrid
 
   def initialize
     puts "Welcome to tic-tac-toe!"
-    puts "Player 1(X) goes first"
+    puts ""
+    puts "Player 1(X) goes first."
+    puts ""
     clear_board
   end
 

@@ -7,26 +7,14 @@ class Game
     4.times do
       print "Player 1 chooses position: "
       round.p1_choice
-      if round.win_check("X")
-        puts "Player 1 wins!"
-        @match.clear_board
-      end
+      round.win_check
       print "Player 2 chooses position: "
       round.p2_choice
-      if round.win_check("O")
-        puts "Player 2 wins!"
-        @match.clear_board
-      end
+      round.win_check
     end
     print "Player 2 chooses position: "
     round.p2_choice
-    return unless round.win_check("O")
-
-    puts "Player 2 wins!"
-    @match.clear_board
-  end
-
-  def replay?
+    round.win_check
   end
 end
 

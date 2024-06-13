@@ -11,8 +11,9 @@ class Match
     choice = gets.chomp.downcase
     if %w[a1 a2 a3 b1 b2 b3 c1 c2 c3].include?(choice)
       if @match.is_occupied?(choice)
-        print "This position is taken."
-        print "Please enter a valid position: "
+        puts ""
+        puts "This position is taken."
+        puts "Please enter a valid position: "
         make_choice(player)
       else
         @match.send("#{choice}=", player)
@@ -32,13 +33,37 @@ class Match
     make_choice("O")
   end
 
-  def win_check(player)
+  def win_condition(player)
     @winning_groups = [
       [@match.a1, @match.a2, @match.a3], [@match.b1, @match.b2, @match.b3], [@match.c1, @match.c2, @match.c3],
-      [@match.a1, @match.b1, @match.c1], [@match.a3, @match.b2, @match.c2], [@match.a3, @match.b3, @match.c3],
+      [@match.a1, @match.b1, @match.c1], [@match.a2, @match.b2, @match.c2], [@match.a3, @match.b3, @match.c3],
       [@match.a1, @match.b2, @match.c3], [@match.a3, @match.b2, @match.c1]
     ]
 
     @winning_groups.any? { |group| group.uniq.length == 1 && group[0] == player }
+  end
+
+  def win_check
+    if win_condition("X")
+      puts "Player 1 Wins!"
+      replay?
+    elsif win_condition("O")
+      puts "Player 2 Wins!"
+      replay?
+    end
+  end
+
+  def replay?
+    print "Would you like to play again?(y/n)"
+    ans = gets.chomp.downcase
+    if ans == "y"
+      @match.clear_board
+    elsif ans == "n"
+      puts "Have a nice day!"
+      exit
+    else
+      puts "That's not a valid option."
+      replay?
+    end
   end
 end
