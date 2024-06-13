@@ -30,5 +30,3 @@ class CreateGrid
     puts ""
   end
 end
-
-# test = CreateGrid.new
