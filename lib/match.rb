@@ -1,6 +1,8 @@
 require "./lib/create_grid"
 
 class Match
+  attr_accessor :winning_groups, :match
+
   def initialize
     @match = CreateGrid.new
   end
@@ -29,24 +31,14 @@ class Match
   def p2_choice
     make_choice("O")
   end
-end
 
-round = Match.new
-print "Player 1 chooses position: "
-round.p1_choice
-print "Player 2 chooses position: "
-round.p2_choice
-print "Player 1 chooses position: "
-round.p1_choice
-print "Player 2 chooses position: "
-round.p2_choice
-print "Player 1 chooses position: "
-round.p1_choice
-print "Player 2 chooses position: "
-round.p2_choice
-print "Player 1 chooses position: "
-round.p1_choice
-print "Player 2 chooses position: "
-round.p2_choice
-print "Player 1 chooses position: "
-round.p1_choice
+  def win_check(player)
+    @winning_groups = [
+      [@match.a1, @match.a2, @match.a3], [@match.b1, @match.b2, @match.b3], [@match.c1, @match.c2, @match.c3],
+      [@match.a1, @match.b1, @match.c1], [@match.a3, @match.b2, @match.c2], [@match.a3, @match.b3, @match.c3],
+      [@match.a1, @match.b2, @match.c3], [@match.a3, @match.b2, @match.c1]
+    ]
+
+    @winning_groups.any? { |group| group.uniq.length == 1 && group[0] == player }
+  end
+end
