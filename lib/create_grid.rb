@@ -1,5 +1,5 @@
 class CreateGrid
-  attr_accessor :a1, :a2, :a3, :b1, :b2, :b3, :c1, :c2, :c3
+  attr_accessor :a1, :a2, :a3, :b1, :b2, :b3, :c1, :c2, :c3, :grid_positions
 
   def initialize
     puts "Welcome to tic-tac-toe!"
@@ -28,5 +28,6 @@ class CreateGrid
     puts "3 | #{a3} | #{b3} | #{c3} |"
     puts "  |⎽⎽⎽|⎽⎽⎽|⎽⎽⎽|"
     puts ""
+    @grid_positions = [a1, a2, a3, b1, b2, b3, c1, c2, c3]
   end
 end

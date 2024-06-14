@@ -39,18 +39,18 @@ class Match
       [@match.a1, @match.b1, @match.c1], [@match.a2, @match.b2, @match.c2], [@match.a3, @match.b3, @match.c3],
       [@match.a1, @match.b2, @match.c3], [@match.a3, @match.b2, @match.c1]
     ]
-
+    if @match.grid_positions.all? { |pos| %w[X O].include?(pos) }
+      puts "It's a draw!"
+      replay?
+    end
     @winning_groups.any? { |group| group.uniq.length == 1 && group[0] == player }
   end
 
   def win_check(player)
-    if win_condition(player)
-      puts "Player 1 Wins!"
-      replay?
-    elsif win_condition(player)
-      puts "Player 2 Wins!"
-      replay?
-    end
+    return unless win_condition(player)
+
+    puts "#{player} Wins!"
+    replay?
   end
 
   def replay?

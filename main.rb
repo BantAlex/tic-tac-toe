@@ -12,8 +12,6 @@ class Game
       round.p2_choice
       round.win_check("O")
     end
-    puts "It's a draw!"
-    round.replay?
   end
 end
 
