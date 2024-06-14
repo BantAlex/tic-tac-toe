@@ -54,7 +54,7 @@ class Match
   end
 
   def replay?
-    print "Would you like to play again?(y/n)"
+    print "Would you like to play again?(y/n): "
     ans = gets.chomp.downcase
     if ans == "y"
       @match.clear_board

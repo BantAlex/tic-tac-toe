@@ -15,6 +15,10 @@ class Game
     print "Player 2 chooses position: "
     round.p2_choice
     round.win_check
+    return unless !round.win_condition("X") && !round.win_condition("O")
+
+    puts "It's a draw!"
+    round.replay?
   end
 end
 
