@@ -43,11 +43,11 @@ class Match
     @winning_groups.any? { |group| group.uniq.length == 1 && group[0] == player }
   end
 
-  def win_check
-    if win_condition("X")
+  def win_check(player)
+    if win_condition(player)
       puts "Player 1 Wins!"
       replay?
-    elsif win_condition("O")
+    elsif win_condition(player)
       puts "Player 2 Wins!"
       replay?
     end

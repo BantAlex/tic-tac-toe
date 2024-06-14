@@ -4,18 +4,14 @@ require "./lib/match"
 class Game
   def initialize
     round = Match.new
-    4.times do
+    until round.win_condition("X") || round.win_condition("O")
       print "Player 1 chooses position: "
       round.p1_choice
-      round.win_check
+      round.win_check("X")
       print "Player 2 chooses position: "
       round.p2_choice
-      round.win_check
+      round.win_check("O")
     end
-    print "Player 2 chooses position: "
-    round.p2_choice
-    round.win_check
-
     puts "It's a draw!"
     round.replay?
   end
